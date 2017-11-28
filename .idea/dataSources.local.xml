@@ -7,7 +7,7 @@
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <introspection-schemas>ace_email_harvest_development:|ace_email_harvest_test:|postgres:public</introspection-schemas>
+      <introspection-schemas>ace_email_harvest_development:*|postgres:public</introspection-schemas>
     </data-source>
   </component>
 </project>
