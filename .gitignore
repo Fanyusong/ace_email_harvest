@@ -114,3 +114,7 @@ pickle-email-*.html
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
+
+# file: ~/.gitignore_global
+.DS_Store
+.idea
