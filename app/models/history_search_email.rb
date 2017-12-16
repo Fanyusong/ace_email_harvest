@@ -1,0 +1,2 @@
+class HistorySearchEmail < ApplicationRecord
+end

@@ -34,8 +34,15 @@ gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 
+gem "devise_token_auth"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Verify Email
+gem 'email_verifier'
+
+# track email
+gem 'ahoy_email'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

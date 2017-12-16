@@ -29,3 +29,7 @@ module AceEmailHarvest
     config.generators.system_tests = nil
   end
 end
+EmailVerifier.config do |config|
+  config.verifier_email = "realname@realdomain.com"
+end
+

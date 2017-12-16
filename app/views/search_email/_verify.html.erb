@@ -1,0 +1,24 @@
+<div id="search-email">
+  <h3>Xác thực email thật hay giả </h3>
+  <%= form_tag search_path, remote: true, method: :get, id:'search-email-form' do %>
+      <div class="form-group row no-padding text-center col-md-12">
+        <div class="col-md-10">
+          <%= text_field_tag :email,
+                             params[:email],
+                             placeholder: 'Nhập email',
+                             autofocus: true,
+                             class: 'form-control search-box input-lg' %>
+        </div>
+        <div class="col-md-2">
+          <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
+              <i class='fa fa-search'></i> Xác thực
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+  <% if @search %>
+      <div id="search-email-result" class="well results-block">
+        <%= @email_live %>
+      </div>
+  <% end %>
+</div>

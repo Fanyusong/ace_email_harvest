@@ -1,0 +1,2 @@
+module SearchEmailHelper
+end
