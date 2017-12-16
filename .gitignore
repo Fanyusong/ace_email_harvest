@@ -18,31 +18,53 @@
 
 .byebug_history
 
-Capfile
-config/deploy.rb
-config/database.yml
-log/*.log
-**/*.spec.log
-db/*.sqlite3
-db/schema.rb
-tmp
-tmp/**/*
-public/assets/*
-public/cache/*
-public/images/themes/*
-public/javascripts/cache/*
-public/stylesheets/cache/*
-public/themes
-public/files/*
-*.swp
-vendor/engines/adva_rbac/spec/db/*.sqlite3
-vendor/engines/adva_rbac/spec/log/*
-.DS_Store
-*.so
-*.dylib
-*.o
-*.bundle
-Makefile
-*.out
-mkmf.log
-coverage.data
+*.rbc
+capybara-*.html
+.rspec
+/log
+/tmp
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/system
+/coverage/
+/spec/tmp
+*.orig
+rerun.txt
+pickle-email-*.html
+
+# Rubymine project
+.idea/
+
+# Test and misc files
+*.rbc
+capybara-*.html
+.rspec
+/public/system
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database and schema.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/db/schema.rb
+
+# Configs
+/config/database.yml
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore rmvrc
+.rvmrc
+
+# If using bower-rails ignore default bower_components path bower.json file
+/vendor/assets/bower_components
+*.bowerrc
+bower.json
