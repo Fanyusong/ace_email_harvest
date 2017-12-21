@@ -50,7 +50,9 @@ pickle-email-*.html
 # Gradle:
 .idea/**/gradle.xml
 .idea/**/libraries
-
+.idea/.generators
+.idea/ace_email_harvest.iml
+.idea/workspace.xml
 # CMake
 cmake-build-debug/
 
