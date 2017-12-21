@@ -120,3 +120,4 @@ bower.json
 .DS_Store
 .idea
 /public
+./idea/**
