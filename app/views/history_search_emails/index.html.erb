@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Keyword</th>
+            <th class="text-center">Searching Time</th>
+            <th class="text-center">Number of Found email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% unless @history_search_results.nil? %>
+            <% @history_search_results.each_with_index do |history_search_result, index| %>
+              <tr>
+                <td class="text-center"><%= index + 1 %></td>
+                <td class="text-center"><%= history_search_result.keyword %></td>
+                <td class="text-center"> <%= history_search_result.search_time %></td>
+                <td class="text-center"><%= history_search_result.match_result_number %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr><p>No result found</p></tr>
+          <% end %>
+        </tbody>
+    </table>
+  </div>
+</div>

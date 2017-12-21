@@ -1,12 +1,12 @@
 class SearchEmailController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:validate_email, :welcome_email]
-  def validate_email
+  skip_before_action :authenticate_user!, only: [:index]
+  def index
     if params[:email]
       @search = true
       begin
-        is_real = EmailVerifier.check(email_params)
-        if is_real
-          @email_live = 1
+        if EmailValidator.valid?(email_params)
+          is_real = EmailVerifier.check(email_params)
+          @email_live = is_real ? 1 : 0
         else
           @email_live = 0
         end
@@ -17,7 +17,7 @@ class SearchEmailController < ApplicationController
       @search = false
     end
     respond_to do |format|
-      format.html { render 'validate_email' }
+      format.html
       format.json do
         return render json: {email_is_exist: @email_live },head: 200 if @search
         render json:{email_is_exist: 0},head: 200 if !@search
@@ -25,10 +25,6 @@ class SearchEmailController < ApplicationController
     end
   end
 
-  def welcome_email
-    UserMailer.send_email_welcome("kyo.shenshie@gmail.com")
-    redirect_to :root
-  end
   private
 
   def email_params

@@ -1,6 +1,10 @@
 // Place all the styles related to the search_email controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.results-block {
-  display: inline-block;
+#search-email-result {
+  font-size: 20px;
+  color: black;
+  background: #e7e7e7;
+  padding: 20px;
+  font-weight: bold;
 }

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Start Time</th>
+        <th class="text-center">End Time</th>
+        <th class="text-center">Number of Sent Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% unless @email_campaigns.nil? %>
+          <% @email_campaigns.each_with_index do |email_campaign, index| %>
+              <tr>
+                <td class="text-center"><%= index + 1 %></td>
+                <td class="text-center"><%= email_campaign.start_time %></td>
+                <td class="text-center"><%= email_campaign.end_time %></td>
+                <td class="text-center">
+                  <% unless email_campaign.list_email.nil? %>
+                    <%= JSON.parse(email_campaign.list_email).length %>
+                  <% else %>
+                    0
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+      <% else %>
+          <tr><p>No result found</p></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
