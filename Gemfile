@@ -34,15 +34,24 @@ gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 
+# rack-cor
+gem 'rack-cors', :require => 'rack/cors'
+# devise-token-auth
 gem "devise_token_auth"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Upload file
+gem 'carrierwave', '~> 1.0'
 # Verify Email
 gem 'email_verifier'
+gem 'email_validator'
 
 # track email
 gem 'ahoy_email'
+
+gem 'sidekiq'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,6 +65,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "letter_opener"
+  gem "mailcatcher"
+  gem 'letter_opener_web'
+
 end
 group :production do
   gem 'rails_12factor'

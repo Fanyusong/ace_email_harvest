@@ -65,6 +65,7 @@ cmake-build-debug/
 # IntelliJ
 out/
 
+.idea/*
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
@@ -118,3 +119,4 @@ bower.json
 # file: ~/.gitignore_global
 .DS_Store
 .idea
+/public
