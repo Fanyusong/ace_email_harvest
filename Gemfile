@@ -34,6 +34,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 
+
 # rack-cor
 gem 'rack-cors', :require => 'rack/cors'
 # devise-token-auth
@@ -44,6 +45,9 @@ gem "devise_token_auth"
 
 # Upload file
 gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+
+
 # Verify Email
 gem 'email_verifier'
 gem 'email_validator'
@@ -51,6 +55,10 @@ gem 'email_validator'
 # track email
 gem 'ahoy_email'
 
+# Rich Text Editor
+gem 'trix'
+gem 'ckeditor_rails'
+# Background Job
 gem 'sidekiq'
 
 group :development, :test do

@@ -54,6 +54,8 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    ckeditor_rails (4.8.0)
+      railties (>= 3.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -139,6 +141,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.8.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
@@ -243,6 +246,8 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    trix (0.11.1)
+      rails (> 4.1, < 5.2)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
@@ -273,6 +278,7 @@ DEPENDENCIES
   ahoy_email
   byebug
   carrierwave (~> 1.0)
+  ckeditor_rails
   coffee-rails (~> 4.2)
   devise
   devise-bootstrap-views
@@ -285,6 +291,7 @@ DEPENDENCIES
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
   mailcatcher
+  mini_magick
   pg (~> 0.18)
   puma (~> 3.7)
   rack-cors
@@ -294,6 +301,7 @@ DEPENDENCIES
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
+  trix
   turbolinks (~> 5)
   twitter-bootstrap-rails
   tzinfo-data

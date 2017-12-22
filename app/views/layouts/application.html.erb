@@ -46,10 +46,10 @@
             <% if current_user %>
                 <li class="dropdown">
                   <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    <% if current_user.first_name && current_user.first_name %>
-                    <%= current_user.first_name + " " + current_user.first_name %>
+                    <% if current_user.first_name && current_user.last_name %>
+                      <%= current_user.first_name + " " + current_user.last_name %>
                     <% else %>
-                    Anonymous
+                      Anonymous
                     <% end %>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

@@ -1,4 +1,7 @@
 class EmailCampaign < ApplicationRecord
+  has_many :messages, class_name: "Ahoy::Message"
+
+
   mount_uploader :file, EmailFileUploader
 
   def read_csv
