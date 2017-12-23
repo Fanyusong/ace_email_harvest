@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   get '/search', to: 'search_email#index'
   root 'search_email#index'
   get '/welcome', to: 'search_email#welcome_email'

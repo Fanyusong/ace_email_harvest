@@ -1,5 +1,6 @@
 class EmailCampaign < ApplicationRecord
   has_many :messages, class_name: "Ahoy::Message"
+  belongs_to :user
 
 
   mount_uploader :file, EmailFileUploader
