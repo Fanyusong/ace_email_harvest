@@ -7,7 +7,7 @@ class EmailCampaign < ApplicationRecord
 
   def read_csv
     array = []
-    CSV.foreach("/Users/phamngoctung/Documents/Workspace/ace_email_harvest/public/upload/email_campaign/1/test/Workbook2.csv" , headers: false).each_with_index do |row, index|
+    CSV.foreach("#{Rails.public_path}/#{self.file.url}" , headers: false).each_with_index do |row, index|
       next if index == 0
       array << row[1]
     end
