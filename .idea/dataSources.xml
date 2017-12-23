@@ -10,5 +10,16 @@
         <property name="ApplicationName" value="DataGrip" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="Heroku ACE" uuid="e6b1507d-e9d9-4a9b-9e22-e609630773f8">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-107-20-176-7.compute-1.amazonaws.com:5432/d62t5fi32t42fk?sslmode=require</jdbc-url>
+      <driver-properties>
+        <property name="ApplicationName" value="DataGrip" />
+        <property name="ssl" value="true" />
+        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>
