@@ -5,6 +5,7 @@ class EmailCampaignWorker
 
     # Do something
     email_campaign = EmailCampaign.find(email_campaign_id)
+    puts email_campaign
     bcc = email_campaign.read_csv
     if bcc.count < 100
       CampaignEmailMailer.action_send_email(from, bcc, subject, content).deliver_now!
