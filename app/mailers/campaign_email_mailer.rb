@@ -1,7 +1,7 @@
 class CampaignEmailMailer < ApplicationMailer
   layout 'mailer'
-  def action_send_email(from, to , subject, body )
-    track extra: {campaign_id: 1, to: to}
+  def action_send_email(from, to , subject, body, email_campaign_id )
+    track extra: {campaign_id: email_campaign_id, to: to}
     mail(from: from,
          to: to,
          subject: subject,

@@ -15,6 +15,8 @@
 //= require twitter/bootstrap
 //= require rails-ujs
 //= require trix
+//= require Chart.bundle
+//= require chartkick
 //= require turbolinks
 //= require_tree
 

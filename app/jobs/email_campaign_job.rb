@@ -1,12 +1,18 @@
 class EmailCampaignJob
   include SuckerPunch::Job
 
-  def perform(array, from, subject, content)
+  def perform(array, from, subject, content, email_campaign_id)
+    # Do something
     if array.count < 100
-      CampaignEmailMailer.action_send_email(from, array, subject, content).deliver_now!
-    else
-      array.to_enum.each_slice(100) do |small_bcc|
-        CampaignEmailMailer.action_send_email(from, small_bcc, subject, content).deliver_later!
+      array.each do |to|
+        CampaignEmailMailer.action_send_email(from, to, subject, content, email_campaign_id).deliver_later!
+      end
+    end
+    if array.count > 100
+      array.to_enum.each_slice(100) do |bcc|
+        bcc.each do |to|
+          CampaignEmailMailer.action_send_email(from, to, subject, content, email_campaign_id).deliver_later!
+        end
       end
     end
   end

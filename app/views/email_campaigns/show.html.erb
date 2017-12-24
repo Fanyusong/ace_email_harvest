@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= line_chart @open_count.count, min: 0, max: @max_number , xtitle: "Date", ytitle: "Number Of Opened Mail" %>
+  </div>
+  <div class="row">
+    <h3>Progress:</h3>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<%= @percent_complete %>"
+           aria-valuemin="0" aria-valuemax="100" style="width: <%= @percent_complete %>%">
+        <%= @percent_complete %>% Complete
+      </div>
+    </div>
+  </div>
+</div>

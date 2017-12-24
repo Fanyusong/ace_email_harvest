@@ -7,9 +7,10 @@ Rails.application.routes.draw do
 
   get '/searching_history', to: 'history_search_emails#index'
 
-  get '/email_campaigns/new', to: 'email_campaigns#new'
-  post '/email_campaigns', to: 'email_campaigns#create'
-  get '/email_campaigns', to: 'email_campaigns#index'
+  # get '/email_campaigns/new', to: 'email_campaigns#new'
+  # post '/email_campaigns', to: 'email_campaigns#create'
+  # get '/email_campaigns', to: 'email_campaigns#index'
+  resources :email_campaigns, only: [:new, :create, :show, :index ]
   namespace :api do
     scope :v1 do
       mount_devise_token_auth_for 'User', at: 'auth'

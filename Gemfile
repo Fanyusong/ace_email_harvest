@@ -34,6 +34,9 @@ gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 
+# Generate Chart
+gem "chartkick"
+gem 'groupdate'
 
 # rack-cor
 gem 'rack-cors', :require => 'rack/cors'

@@ -1,5 +1,5 @@
 class EmailCampaign < ApplicationRecord
-  has_many :messages, class_name: "Ahoy::Message"
+  has_many :messages, class_name: "Ahoy::Message" , :foreign_key => :campaign_id
   belongs_to :user
 
 

@@ -4,6 +4,13 @@ class EmailCampaignsController < ApplicationController
     @email_campaigns = EmailCampaign.where(user_id: current_user.id)
   end
 
+  def show
+    @email_campaign = EmailCampaign.find(params[:id])
+    @max_number = JSON.parse(@email_campaign.list_email).length
+    @open_count = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").group_by_day(:opened_at, range: 2.weeks.ago..(Time.now + 2.weeks))
+    @percent_complete = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").count * 100/@max_number
+  end
+
   def new
     @email_campaign = EmailCampaign.new
   end
@@ -17,10 +24,10 @@ class EmailCampaignsController < ApplicationController
     if @email_campaign.save!
       array = @email_campaign.read_csv
       if Rails.env = "production"
-        EmailCampaignJob.perform_async(array, params[:from], params[:subject], params[:content])
+        EmailCampaignJob.perform_async(array, params[:from], params[:subject], params[:content], @email_campaign.id)
       end
       if Rails.env = "development"
-        EmailCampaignWorker.perform_async(array, params[:from], params[:subject], params[:content])
+        EmailCampaignWorker.perform_async(array, params[:from], params[:subject], params[:content], @email_campaign.id)
       end
       redirect_to email_campaigns_path
     else

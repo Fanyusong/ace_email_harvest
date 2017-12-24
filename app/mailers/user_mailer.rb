@@ -11,7 +11,6 @@ class UserMailer < ApplicationMailer
     end
     # Send email when publish project
     def send_email_welcome(user)
-      track extra: {campaign_id: 1}
       mail(
           to: user,
           subject: "Welcome to ACE",

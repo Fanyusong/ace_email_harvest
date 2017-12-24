@@ -54,6 +54,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (2.2.5)
     ckeditor_rails (4.8.0)
       railties (>= 3.0)
     coffee-rails (4.2.2)
@@ -90,6 +91,8 @@ GEM
     ffi (1.9.18)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -280,6 +283,7 @@ DEPENDENCIES
   ahoy_email
   byebug
   carrierwave (~> 1.0)
+  chartkick
   ckeditor_rails
   coffee-rails (~> 4.2)
   devise
@@ -287,6 +291,7 @@ DEPENDENCIES
   devise_token_auth
   email_validator
   email_verifier
+  groupdate
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
