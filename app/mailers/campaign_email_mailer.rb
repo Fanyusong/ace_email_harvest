@@ -5,6 +5,7 @@ class CampaignEmailMailer < ApplicationMailer
     mail(from: from,
          bcc: to,
          subject: subject,
-         body: body)
+         body: body,
+         content_type: "text/html")
   end
 end
