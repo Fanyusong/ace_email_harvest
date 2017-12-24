@@ -16,7 +16,12 @@ class EmailCampaignsController < ApplicationController
     @email_campaign = EmailCampaign.new(start_time: @start_time, end_time: @end_time, user_id: current_user.id, file: params[:file_data])
     if @email_campaign.save!
       array = @email_campaign.read_csv
-      EmailCampaignWorker.perform_async(array, params[:from], params[:subject], params[:content])
+      if Rails.env = "production"
+        EmailCampaignJob.perform_async(array, params[:from], params[:subject], params[:content])
+      end
+      if Rails.env = "development"
+        EmailCampaignWorker.perform_async(array, params[:from], params[:subject], params[:content])
+      end
       redirect_to email_campaigns_path
     else
       render 'new'
