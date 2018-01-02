@@ -41,6 +41,10 @@ module AceEmailHarvest
                  :methods => [:get, :post, :options, :delete, :put]
       end
     end
+
+    # require Rails.root.join('lib', 'email_tracker', 'rack')
+    # # Some other stuff
+    # config.middleware.use EmailTracker::Rack
   end
 end
 EmailVerifier.config do |config|

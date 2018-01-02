@@ -11,11 +11,7 @@ Rails.application.routes.draw do
   # post '/email_campaigns', to: 'email_campaigns#create'
   # get '/email_campaigns', to: 'email_campaigns#index'
   resources :email_campaigns, only: [:new, :create, :show, :index ]
-  namespace :api do
-    scope :v1 do
-      mount_devise_token_auth_for 'User', at: 'auth'
-    end
-  end
+  resources :admin, only: [:index, :destroy, :update]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

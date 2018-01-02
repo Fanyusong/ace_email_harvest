@@ -6,7 +6,7 @@ class EmailCampaignsController < ApplicationController
 
   def show
     @email_campaign = EmailCampaign.find(params[:id])
-    @max_number = JSON.parse(@email_campaign.list_email).length
+    @max_number = JSON.parse(@email_campaign.list_email).length || 100
     @open_count = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").group_by_day(:opened_at, range: 2.weeks.ago..(Time.now + 2.weeks))
     @percent_complete = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").count * 100/@max_number
   end

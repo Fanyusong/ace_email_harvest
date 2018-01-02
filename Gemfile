@@ -41,7 +41,6 @@ gem 'groupdate'
 # rack-cor
 gem 'rack-cors', :require => 'rack/cors'
 # devise-token-auth
-gem "devise_token_auth"
 
 
 # Use Capistrano for deployment
