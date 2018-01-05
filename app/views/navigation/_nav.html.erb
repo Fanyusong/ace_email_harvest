@@ -6,16 +6,16 @@
     <a class="navbar-brand" href="/">AceEmailHarvest</a>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Search", "/search"  %></li>
+        <li><%= link_to "Search", user_search_path %></li>
         <% if current_user && !current_user.is_lock %>
-            <li><%= link_to "Searching History", "/searching_history"  %></li>
+            <li><%= link_to "Searching History", user_searching_history_path  %></li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown">
                 Email Campaign
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a href="<%= new_email_campaign_path %>"  class="dropdown-item"><i class="glyphicon glyphicon-envelope"></i> New Email Campaign</a></li>
-                <li><a href="<%= email_campaigns_path  %>"  class="dropdown-item"><i class="glyphicon glyphicon-list-alt"></i> History Of Email Campaigns</a></li>
+                <li><a href="<%= new_user_email_campaign_path %>"  class="dropdown-item"><i class="glyphicon glyphicon-envelope"></i> New Email Campaign</a></li>
+                <li><a href="<%= user_email_campaigns_path  %>"  class="dropdown-item"><i class="glyphicon glyphicon-list-alt"></i> History Of Email Campaigns</a></li>
               </ul>
             </li>
         <% end %>

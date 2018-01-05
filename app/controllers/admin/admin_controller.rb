@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+class Admin::AdminController < Admin::BaseController
   before_action :admin_set_user, only: [:delete, :update]
 
   def index

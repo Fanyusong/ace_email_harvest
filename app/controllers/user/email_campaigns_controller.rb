@@ -1,4 +1,4 @@
-class EmailCampaignsController < ApplicationController
+class User::EmailCampaignsController < User::BaseController
 
   def index
     @email_campaigns = EmailCampaign.where(user_id: current_user.id)
