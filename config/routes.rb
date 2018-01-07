@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   devise_for :admins, path: 'admin', controllers: {
       sessions: 'admin/sessions',
-      passwords: 'admin/passwords',
-      registrations: 'admin/registrations'
+      passwords: 'admin/passwords'
   }
-  devise_for :users, path: 'user', controllers: {
-                                                              sessions: 'user/sessions',
-                                                              passwords: 'user/passwords',
-                                                              registrations: 'user/registrations'
+  devise_for :users, path: 'user', controllers: { sessions: 'user/sessions',
+                                                            passwords: 'user/passwords',
+                                                            registrations: 'user/registrations'
                                                           }
   namespace :user, url: '/' do
     get '/search', to: 'search_email#index'
@@ -17,8 +15,10 @@ Rails.application.routes.draw do
     root to: 'search_email#index'
   end
   namespace :admin, url: '/admin' do
-    resources :admin, only: [:index, :destroy, :update]
-    root to: 'admin#index'
+    resources :user, only: [:index, :destroy, :update]
+    get '/edit_profile', to: "admin#edit_profile"
+    post '/edit_profile', to: "admin#update_info"
+    root to: 'user#index'
   end
   root to: 'user/search_email#index'
 

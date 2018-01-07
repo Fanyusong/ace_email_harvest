@@ -7,7 +7,7 @@
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
         <% if current_admin %>
-            <li><%= link_to "Manage user", admin_admin_index_path  %></li>
+            <li><%= link_to "Manage user", admin_user_index_path  %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -17,7 +17,7 @@
                 <%= full_name_of_user(current_admin) %>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a href="<%= edit_admin_password_path %>"  class="dropdown-item"><i class="glyphicon glyphicon-user"></i> Edit Profile</a></li>
+                <li><a href="<%= admin_edit_profile_path %>"  class="dropdown-item"><i class="glyphicon glyphicon-user"></i> Edit Profile</a></li>
                 <li><a href="<%= destroy_admin_session_path %>" data-method="delete"  class="dropdown-item"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
               </ul>
             </li>
