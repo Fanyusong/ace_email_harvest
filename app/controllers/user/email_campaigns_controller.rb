@@ -1,4 +1,4 @@
-class EmailCampaignsController < ApplicationController
+class User::EmailCampaignsController < User::BaseController
 
   def index
     @email_campaigns = EmailCampaign.where(user_id: current_user.id)
@@ -7,7 +7,7 @@ class EmailCampaignsController < ApplicationController
   def show
     @email_campaign = EmailCampaign.find(params[:id])
     @max_number = JSON.parse(@email_campaign.list_email).length || 100
-    @open_count = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").group_by_day(:opened_at, range: 2.weeks.ago..(Time.now + 2.weeks))
+    @open_count = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").group_by_day(:opened_at, range: @email_campaign.start_time.at_beginning_of_day..@email_campaign.end_time)
     @percent_complete = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").count * 100/@max_number
   end
 
@@ -23,13 +23,13 @@ class EmailCampaignsController < ApplicationController
     @email_campaign = EmailCampaign.new(start_time: @start_time, end_time: @end_time, user_id: current_user.id, file: params[:file_data])
     if @email_campaign.save!
       array = @email_campaign.read_csv
-      if Rails.env = "production"
+      if Rails.env == "production"
         EmailCampaignJob.perform_async(array, params[:from], params[:subject], params[:content], @email_campaign.id)
       end
-      if Rails.env = "development"
-        EmailCampaignWorker.perform_async(array, params[:from], params[:subject], params[:content], @email_campaign.id)
+      if Rails.env == "development"
+        EmailCampaignWorker.perform_in(@start_time,array, params[:from], params[:subject], params[:content], @email_campaign.id)
       end
-      redirect_to email_campaigns_path
+      redirect_to user_email_campaigns_path
     else
       render 'new'
     end

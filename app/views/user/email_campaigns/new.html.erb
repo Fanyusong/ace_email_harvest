@@ -2,10 +2,10 @@
   <h1>Email Content</h1>
   <div class="row">
     <div class = "well">
-      <%= form_tag(email_campaigns_path, method: "post", multipart: true) do %>
+      <%= form_tag(user_email_campaigns_path, method: "post", multipart: true) do %>
           <div class="form-group">
             <%= label_tag :start_time %>
-            <%= datetime_select :start_time, :date , prefix: :start_time, :order => [:month, :day, :year,:hour,:minute], class: "form-control" %>
+            <%= datetime_select :start_time, :date , default: DateTime.now, prefix: :start_time, :order => [:month, :day, :year,:hour,:minute], class: "form-control" %>
           </div>
           <div class="form-group">
             <%= label_tag :end_time %>

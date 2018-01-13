@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+class Admin::UserController < Admin::BaseController
   before_action :admin_set_user, only: [:delete, :update]
 
   def index
@@ -12,6 +12,10 @@ class AdminController < ApplicationController
     is_lock = @user.is_lock
     @user.update(is_lock: !is_lock)
     redirect_to admin_index_path
+  end
+
+  def edit
+    @admin = current_admin
   end
 
   private

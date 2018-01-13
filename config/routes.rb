@@ -1,17 +1,27 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users, :controllers => {:registrations => "registrations"}
-  get '/search', to: 'search_email#index'
-  root 'search_email#index'
-  get '/welcome', to: 'search_email#welcome_email'
+  devise_for :admins, path: 'admin', controllers: {
+      sessions: 'admin/sessions',
+      passwords: 'admin/passwords'
+  }
+  devise_for :users, path: 'user', controllers: { sessions: 'user/sessions',
+                                                            passwords: 'user/passwords',
+                                                            registrations: 'user/registrations'
+                                                          }
+  namespace :user, url: '/' do
+    get '/search', to: 'search_email#index'
+    get '/welcome', to: 'search_email#welcome_email'
+    get '/searching_history', to: 'history_search_emails#index'
+    resources :email_campaigns, only: [:new, :create, :show, :index ]
+    root to: 'search_email#index'
+  end
+  namespace :admin, url: '/admin' do
+    resources :user, only: [:index, :destroy, :update]
+    get '/edit_profile', to: "admin#edit_profile"
+    post '/edit_profile', to: "admin#update_info"
+    root to: 'user#index'
+  end
+  root to: 'user/search_email#index'
 
-  get '/searching_history', to: 'history_search_emails#index'
-
-  # get '/email_campaigns/new', to: 'email_campaigns#new'
-  # post '/email_campaigns', to: 'email_campaigns#create'
-  # get '/email_campaigns', to: 'email_campaigns#index'
-  resources :email_campaigns, only: [:new, :create, :show, :index ]
-  resources :admin, only: [:index, :destroy, :update]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

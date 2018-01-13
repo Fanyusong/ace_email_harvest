@@ -1,4 +1,4 @@
-class SearchEmailController < ApplicationController
+class User::SearchEmailController < User::BaseController
   skip_before_action :authenticate_user!, only: [:index]
   def index
     if params[:email]

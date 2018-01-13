@@ -1,0 +1,49 @@
+
+<div class="panel-heading">
+  <h4>Edit Profile of Admin</h4>
+</div>
+<%= form_with scope: :admin, url: '/admin/edit_profile', method: :post, local: true do |form| %>
+    <% if @admin.errors.any? %>
+        <div class="alert alert-danger alert-block devise-bs">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <% @admin.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :birthday %>
+      <%= form.text_field :birthday, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :phone %>
+      <%= form.text_field :phone, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :address %>
+      <%= form.text_field :address, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= form.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', default: "leave blank if you don't want to change it") %>)</i>
+      <%= form.password_field :password, autocomplete: "off", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= form.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes', default: 'we need your current password to confirm your changes') %>)</i>
+      <%= form.password_field :current_password, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
+<% end %>

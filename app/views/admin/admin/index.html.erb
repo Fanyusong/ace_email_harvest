@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% unless @users.nil? %>
+          <% @users.each_with_index do |user, index| %>
+              <tr>
+                <td class="text-center"><%= index + 1 %></td>
+                <td class="text-center"><%= user.first_name + user.last_name %></td>
+                <td class="text-center"><%= user.email %></td>
+                <% unless user.is_lock %>
+                <td><%= link_to 'Lock Account', admin_admin_path(user), method: :put,
+                                data: { confirm: 'Are you sure?' } %></td>
+                <% else %>
+                <td><%= link_to 'Unlock Account', admin_admin_path(user), method: :put,
+                                data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
+                <td><%= link_to 'Delete User', admin_admin_path(user), method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+          <% end %>
+      <% else %>
+          <tr><p>No result found</p></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
