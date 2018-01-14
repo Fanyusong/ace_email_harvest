@@ -45,6 +45,7 @@ module AceEmailHarvest
     # require Rails.root.join('lib', 'email_tracker', 'rack')
     # # Some other stuff
     # config.middleware.use EmailTracker::Rack
+    config.time_zone = 'Hanoi'
   end
 end
 EmailVerifier.config do |config|
