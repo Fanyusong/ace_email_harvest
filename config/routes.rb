@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/search', to: 'search_email#index'
     get '/welcome', to: 'search_email#welcome_email'
     get '/searching_history', to: 'history_search_emails#index'
+    get '/download-file', to: 'search_email#download'
     resources :email_campaigns, only: [:new, :create, :show, :index ]
     root to: 'search_email#index'
   end

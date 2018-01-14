@@ -1,3 +1,17 @@
 <%= render 'verify' %>
 <%= render 'result' %>
+<hr>
+<% if current_user %>
+    <div class="box" >
+      <h2 class="text-center">Email Harvest Sofware</h2>
+      <h4 class="text-center">Created by Nguyen Tien Hoi - Pham Ngoc Tung</h4>
+      <h4 class="text-center">UIT-2018</h4>
+      <br>
+      <div align="center">
+        <%= link_to  user_download_file_path, target: :_blank, class: 'btn btn-success' do %>
+            <i class="glyphicon glyphicon-download-alt"></i> Download
+        <% end %>
+      </div>
+    </div>
+<% end %>
 

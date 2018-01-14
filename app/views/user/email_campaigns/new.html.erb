@@ -1,27 +1,35 @@
+<% if @email_campaign.errors.any? %>
+    <div class="alert alert-danger alert-block devise-bs">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <% @email_campaign.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </div>
+<% end %>
 <div class="container-fluid">
   <h1>Email Content</h1>
   <div class="row">
     <div class = "well">
-      <%= form_tag(user_email_campaigns_path, method: "post", multipart: true) do %>
+      <%= form_tag(user_email_campaigns_path, method: "post", multipart: true, local: true) do %>
           <div class="form-group">
             <%= label_tag :start_time %>
             <%= datetime_select :start_time, :date , default: DateTime.now, prefix: :start_time, :order => [:month, :day, :year,:hour,:minute], class: "form-control" %>
           </div>
           <div class="form-group">
             <%= label_tag :end_time %>
-            <%= datetime_select :end_time, :date, :order => [:month, :day, :year,:hour,:minute], class: "form-control" %>
+            <%= datetime_select :end_time, :date, default: DateTime.now, prefix: :end_time, :order => [:month, :day, :year,:hour,:minute], class: "form-control" %>
           </div>
           <div class="form-group">
             <%= label_tag :from %>
-            <%= text_field_tag :from, nil, class: 'form-control' %>
+            <%= text_field_tag :from, nil, :required => true, class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= label_tag :to %>
-            <%= file_field_tag :file_data, class: "form-control" %>
+            <%= file_field_tag :file_data, :required => true, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= label_tag :subject %>
-            <%= text_field_tag :subject,  nil, class: 'form-control' %>
+            <%= text_field_tag :subject,  nil, :required => true,  class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= label_tag :content %>

@@ -25,6 +25,11 @@ class User::SearchEmailController < User::BaseController
     end
   end
 
+  def download
+    if current_user
+      send_file "#{Rails.public_path}/ACE_EmailHarvest_Install.zip", type: 'application/zip', disposition: 'inline'
+    end
+  end
   private
 
   def email_params
