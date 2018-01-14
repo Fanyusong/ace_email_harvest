@@ -11,4 +11,26 @@
       </div>
     </div>
   </div>
+  <div class="clear-fix"></div>
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Opened At</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @list_email_campaign.each_with_index do |email_campaign, index| %>
+            <tr>
+              <td class="text-center"><%= index + 1 %></td>
+              <td class="text-center"><%= email_campaign.to %></td>
+              <td class="text-center"><%= email_campaign.opened_at %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div align="center"><%= will_paginate @list_email_campaign, renderer: BootstrapPagination::Rails %></div>
+  </div>
 </div>
