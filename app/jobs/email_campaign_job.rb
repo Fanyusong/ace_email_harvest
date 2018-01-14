@@ -5,7 +5,7 @@ class EmailCampaignJob
     # Do something
     if array.count < 100
       array.each do |to|
-        CampaignEmailMailer.action_send_email(from, to, subject, content, email_campaign_id).deliver_later!
+        CampaignEmailMailer.action_send_email(from, to, subject, content, email_campaign_id).deliver_later(wait: 1.second)
       end
     end
     if array.count > 100
