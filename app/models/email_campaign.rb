@@ -9,7 +9,8 @@ class EmailCampaign < ApplicationRecord
     array = []
     CSV.foreach("#{Rails.public_path}/#{self.file.url}" , headers: false).each_with_index do |row, index|
       next if index == 0
-      array << row[1]
+      is_real = EmailValidator.valid?(row[1])
+      array << row[1] if is_real
     end
     update(list_email: array)
     array
