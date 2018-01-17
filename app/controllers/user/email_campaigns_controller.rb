@@ -7,7 +7,7 @@ class User::EmailCampaignsController < User::BaseController
   def show
     @email_campaign = EmailCampaign.find(params[:id])
     @max_number = JSON.parse(@email_campaign.list_email).length || 100
-    @open_count = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").group_by_day(:opened_at, range: @email_campaign.start_time.at_beginning_of_day..@email_campaign.end_time)
+    @open_count = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").group_by_day(:opened_at, range: @email_campaign.start_time..@email_campaign.end_time)
     @percent_complete = @email_campaign.messages.where("ahoy_messages.opened_at IS NOT NULL").count * 100/@max_number
     @list_email_campaign = @email_campaign.messages.paginate(:page => params[:page] || 1, :per_page => 10)
   end
